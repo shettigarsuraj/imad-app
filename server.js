@@ -66,7 +66,7 @@ app.get('/Page-two', function (req, res) {
 });
 
 app.get('/Page-three', function (req, res) {
-  res.sendFile(createTemplate(pageOne));
+  res.send(createTemplate(pageOne));
 });
 
 app.get('/ui/style.css', function (req, res) {
