@@ -17,7 +17,7 @@ var pageOne = {
               </p>`
 };
 
-function createtemplate(data) {
+function createTemplate(data) {
     
     var coontent=data.content;
     var date=data.date;
