@@ -5,38 +5,40 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var pageOne = {
-    title: 'Page One | Suraj Shettigar',
-    date: 'August 10 2017',
-    heading: 'This is the first page of IMAD web application',
-    content: `<p>
-                This is the first page of IMAD web app.
-              </p>
-              <p>
-                Trying out few HTML basics. Also try adding few CSS styling to the page.<br/>
-                And try inspecting the page from chrome browser and make changes accordingly.Try to align the content of the page
-              </p>`
-};
-
-var pageTwo = {
-    title: 'Page Two| Suraj shettigar',
-    date: 'August 20 2017',
-    heading: 'Page two of IMAD web application',
-    content: `<p>
-                Exercise to add more web pages to our web app. HTML practice.<br/>
-             </p>`
-};
-
-var pageThree = {
-    title: 'Page One | Suraj Shettigar',
-    heading: 'GOT fan page',
-    date: 'Aug 9 2017',
-    content: `<p>
-                This page is exclusively dedicated to GOT.<br/>
-                This page will contain all the updates from GOT Season 7.<br/><br/>
-                
-                Stay tuned for latest updates and bloopers ;)
-              </p>`
+var pages = {
+    'page-one': {
+        title: 'Page One | Suraj Shettigar',
+        date: 'August 10 2017',
+        heading: 'This is the first page of IMAD web application',
+        content: `<p>
+                    This is the first page of IMAD web app.
+                  </p>
+                  <p>
+                    Trying out few HTML basics. Also try adding few CSS styling to the page.<br/>
+                    And try inspecting the page from chrome browser and make changes accordingly.Try to align the content of the page
+                  </p>`
+    },
+    
+    'page-two': {
+        title: 'Page Two| Suraj shettigar',
+        date: 'August 20 2017',
+        heading: 'Page two of IMAD web application',
+        content: `<p>
+                    Exercise to add more web pages to our web app. HTML practice.<br/>
+                 </p>`
+    },
+    
+    'page-three': {
+        title: 'Page One | Suraj Shettigar',
+        heading: 'GOT fan page',
+        date: 'Aug 9 2017',
+        content: `<p>
+                    This page is exclusively dedicated to GOT.<br/>
+                    This page will contain all the updates from GOT Season 7.<br/><br/>
+                    
+                    Stay tuned for latest updates and bloopers ;)
+                  </p>`
+    }
 };
 
 function createTemplate(data) {
@@ -81,17 +83,19 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/Page-one', function (req, res) {
-  res.send(createTemplate(pageOne));
+app.get('/:pageName', function (req, res) {
+    //req.params is a functionality provided by express frameowrk,used to get value of :pageName that is attached to the request URL.
+    var pageName = req.params.pageName;
+    res.send(createTemplate(pages[pageName]));
 });
 
-app.get('/Page-two', function (req, res) {
-  res.send(createTemplate(pageTwo));
-});
+//app.get('/Page-two', function (req, res) {
+//  res.send(createTemplate(pageTwo));
+//});
 
-app.get('/Page-three', function (req, res) {
-  res.send(createTemplate(pageThree));
-});
+//app.get('/Page-three', function (req, res) {
+//  res.send(createTemplate(pageThree));
+//});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
