@@ -7,6 +7,28 @@ app.use(morgan('combined'));
 
 var pageOne = {
     title: 'Page One | Suraj Shettigar',
+    date: new DATE(),
+    heading: 'This is the first page of IMAD web application',
+    content: `<p>
+                This is the first page of IMAD web app.
+              </p>
+              <p>
+                 Trying out few HTML basics. Also try adding few CSS styling to the page.<br/>
+                And try inspecting the page from chrome browser and make changes accordingly.Try to align the content of the page
+              </p>`
+};
+
+var pageTwo = {
+    title: 'Page Two| Suraj shettigar',
+    date: new DATE(),
+    heading: 'Page two of IMAD web application',
+    content: `<p>
+                Exercise to add more web pages to our web app. HTML practice.<br/>
+             </p>`
+};
+
+var pageThree = {
+    title: 'Page One | Suraj Shettigar',
     heading: 'GOT fan page',
     date: 'Aug 9 2017',
     content: `<p>
@@ -58,15 +80,15 @@ app.get('/', function (req, res) {
 });
 
 app.get('/Page-one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'page-one.html'));
+  res.send(createTemplate(pageOne));
 });
 
 app.get('/Page-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'page-two.html'));
+  res.send(createTemplate(pageTwo));
 });
 
 app.get('/Page-three', function (req, res) {
-  res.send(createTemplate(pageOne));
+  res.send(createTemplate(pageThree));
 });
 
 app.get('/ui/style.css', function (req, res) {
