@@ -7,20 +7,20 @@ app.use(morgan('combined'));
 
 var pageOne = {
     title: 'Page One | Suraj Shettigar',
-    date: new DATE(),
+    date: 'August 10 2017',
     heading: 'This is the first page of IMAD web application',
     content: `<p>
                 This is the first page of IMAD web app.
               </p>
               <p>
-                 Trying out few HTML basics. Also try adding few CSS styling to the page.<br/>
+                Trying out few HTML basics. Also try adding few CSS styling to the page.<br/>
                 And try inspecting the page from chrome browser and make changes accordingly.Try to align the content of the page
               </p>`
 };
 
 var pageTwo = {
     title: 'Page Two| Suraj shettigar',
-    date: new DATE(),
+    date: 'August 20 2017',
     heading: 'Page two of IMAD web application',
     content: `<p>
                 Exercise to add more web pages to our web app. HTML practice.<br/>
@@ -71,7 +71,6 @@ function createTemplate(data) {
         </body>
         </HTML>
     `;
-    
 return htmlTemplate;
 }
 
