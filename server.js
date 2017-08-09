@@ -29,7 +29,7 @@ var pages = {
     },
     
     'page-three': {
-        title: 'Page One | Suraj Shettigar',
+        title: 'GOT fan page | Suraj Shettigar',
         heading: 'GOT fan page',
         date: 'Aug 9 2017',
         content: `<p>
